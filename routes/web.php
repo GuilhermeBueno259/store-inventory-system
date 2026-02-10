@@ -13,10 +13,11 @@
 |
 */
 
-
 $router->get('/', function () use ($router) {
     return $router->app->version();
 });
+
+$router->post("auth", "LoginController@authenticate");
 
 $router->group(["middleware" => "auth"], function () use ($router) {
     $router->group(["prefix" => "v1"], function () use ($router) {
